@@ -1,0 +1,5 @@
+Binary Code - 1100000100001100010011001
+Pause length - 0.005
+One length - 0.0001
+Zero length - 0.0004
+Bit length - 0.0006

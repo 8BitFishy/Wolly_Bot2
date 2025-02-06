@@ -59,15 +59,17 @@ def Code_Picker(Octavius_Receiver, target, action, number=None):
         Octavius_Receiver.send_message(f"Turning {target} plug {number} {action}")
         for i in range(len(binary_codes)):
             if binary_codes[i][0] == target and binary_codes[i][1] == number and binary_codes[i][2] == action:
+                print(ctime() + f" - Code found")
                 try:
                     transmit_code(binary_codes[i][3])
                     print(ctime() + f" - {target} plug {number} turned {action}")
                     Octavius_Receiver.send_message(f"{target} plug {number} turned {action}")
+                    break
                 except:
                     print(ctime() + f" - Failed to send code")
                     Octavius_Receiver.send_message(f"Failed to send code")
+                    break
 
-                return
     return
 
 

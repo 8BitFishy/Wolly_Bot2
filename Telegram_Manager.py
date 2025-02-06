@@ -2,10 +2,14 @@ import json
 import requests
 import urllib
 from time import time, ctime, sleep
+from os import system
+
+if system == "Linux":
+    directory = __file__.strip("Telegram_Manager.py").strip(":")
+else:
+    directory = __file__.rpartition("\\")[0] + "\\"
 
 filename = 'telegramID.txt'
-directory = __file__.strip("Telegram_Manager.py").strip(":")
-
 with open(f'{directory}{filename}') as f:
     IDS = f.read().splitlines()
 

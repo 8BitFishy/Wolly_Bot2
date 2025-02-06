@@ -9,7 +9,7 @@ try:
     led = LED(17)
 
 except:
-    print(ctime() + "No gpiozero module found")
+    print(ctime() + " - No gpiozero module found")
 
 directory = __file__.strip("Command_Centre.py").strip(":")
 protected_files = ['Command_Centre.py', 'Telegram_Manager.py', 'wollybot.py', 'telegramID.txt']
@@ -252,10 +252,10 @@ def handle(msg, Octavius_Receiver):
 
     elif action == "ALL" or action == "BLACK" or action == "WHITE":
         if len(command) == 2:
-            RF_Transmitter.Code_Picker(action.lower(), command[2].lower())
+            RF_Transmitter.Code_Picker(Octavius_Receiver, action.lower(), command[2].lower())
 
         else:
-            RF_Transmitter.Code_Picker(action.lower(), command[2].lower(), command[1])
+            RF_Transmitter.Code_Picker(Octavius_Receiver, action.lower(), command[2].lower(), command[1])
 
 
 

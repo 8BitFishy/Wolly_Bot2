@@ -13,7 +13,7 @@ except:
 
 directory = __file__.strip("Command_Centre.py").strip(":")
 protected_files = ['Command_Centre.py', 'Telegram_Manager.py', 'wollybot.py', 'telegramID.txt', 'RF_Transmitter.py']
-git_repo = 'https://raw.githubusercontent.com/8BitFishy/Wolly_Bot2/main/'
+git_repo = 'https://raw.githubusercontent.com/8BitFishy/Wolly_Bot2/refs/heads/main/'
 
 def update():
     system("rm wollybot/Command_Centre.py")

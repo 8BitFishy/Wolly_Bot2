@@ -12,16 +12,20 @@ except:
     print(ctime() + " - No gpiozero module found")
 
 directory = __file__.strip("Command_Centre.py").strip(":")
-protected_files = ['Command_Centre.py', 'Telegram_Manager.py', 'wollybot.py', 'telegramID.txt']
-git_repo = 'https://raw.githubusercontent.com/8BitFishy/wollybot/deployed/'
+protected_files = ['Command_Centre.py', 'Telegram_Manager.py', 'wollybot.py', 'telegramID.txt', 'RF_Transmitter.py']
+git_repo = 'https://raw.githubusercontent.com/8BitFishy/Wolly_Bot2/main/'
 
 def update():
     system("rm wollybot/Command_Centre.py")
     system("rm wollybot/Telegram_Manager.py")
     system("rm wollybot/wollybot.py")
+    system("rm wollybot/RF_Transmitter.py")
+
     system(f"wget -P {directory} {git_repo}Command_Centre.py")
     system(f"wget -P {directory} {git_repo}Telegram_Manager.py")
     system(f"wget -P {directory} {git_repo}wollybot.py")
+    system(f"wget -P {directory} {git_repo}RF_Transmitter.py")
+
     return
 
 def download(filename):
@@ -48,6 +52,9 @@ def talk(Octavius_Receiver):
     Octavius_Receiver.send_message("Print [filename] [number of lines]")
     Octavius_Receiver.send_message("Length [filename]")
     Octavius_Receiver.send_message("Delete [filename]")
+    Octavius_Receiver.send_message("[plug colour (black / white)] [number (1-5)] [action (on/off)")
+    Octavius_Receiver.send_message("All [action (on / off)]")
+
     return
 
 def on():

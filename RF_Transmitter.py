@@ -1,6 +1,6 @@
 from time import ctime, sleep
-from os import walk, system
-from Telegram_Manager import directory
+from os import walk
+from platform import system
 
 try:
     import RPi.GPIO as GPIO
@@ -10,7 +10,7 @@ try:
 except:
     print(ctime() + " - No gpiozero module found")
 
-if system == "Linux":
+if system() == "Linux":
     directory = __file__.strip("Telegram_Manager.py").strip(":")
 else:
     directory = __file__.rpartition("\\")[0] + "\\"
@@ -66,7 +66,7 @@ def Code_Picker(Octavius_Receiver, target, action, number=None):
                 except:
                     print(ctime() + f" - Failed to send code")
                     Octavius_Receiver.send_message(f"Failed to send code")
-                    
+
                 return
     return
 

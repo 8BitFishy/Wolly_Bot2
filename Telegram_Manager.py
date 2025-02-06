@@ -2,9 +2,9 @@ import json
 import requests
 import urllib
 from time import time, ctime, sleep
-from os import system
+from platform import system
 
-if system == "Linux":
+if system() == "Linux":
     directory = __file__.strip("Telegram_Manager.py").strip(":")
 else:
     directory = __file__.rpartition("\\")[0] + "\\"

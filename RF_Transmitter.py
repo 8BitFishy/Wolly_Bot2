@@ -58,6 +58,8 @@ def Code_Picker(Octavius_Receiver, target, action, number=None):
         print(ctime() + f" - Action - Turn {target} plug {number} {action}")
         Octavius_Receiver.send_message(f"Turning {target} plug {number} {action}")
         for i in range(len(binary_codes)):
+            print(f"{binary_codes[i][0]} == {target} and {binary_codes[i][1]} == {number} and {binary_codes[i][2]} == {action}")
+            print(f"{type(binary_codes[i][0])} == {type(target)} and {type(binary_codes[i][1])} == {type(number)} and {type(binary_codes[i][2])} == {type(action)}")
             if binary_codes[i][0] == target and binary_codes[i][1] == number and binary_codes[i][2] == action:
                 print(ctime() + f" - Code found")
                 try:

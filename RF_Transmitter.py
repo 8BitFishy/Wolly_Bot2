@@ -11,13 +11,13 @@ except:
     print(ctime() + " - No gpiozero module found")
 
 if system() == "Linux":
-    directory = __file__.strip("Telegram_Manager.py").strip(":")
+    directory = __file__.strip("RF_Transmitter.py").strip(":") + "/"
 else:
     directory = __file__.rpartition("\\")[0] + "\\"
 directory += "RF_Binary_Codes/Plugs-"
 
 binary_codes = []
-
+print(directory)
 for i in range(2):
     if i == 0:
         plug = 'Black'
@@ -38,7 +38,7 @@ for i in range(2):
 
                     code.append(value)
                 binary_codes.append([plug.lower(), int(file[0]), file[2:5].rstrip('_').lower(), code])
-
+                print(code)
 
 
 
@@ -107,3 +107,4 @@ def transmit_code(binary_code):
 def Generate_Code_List():
 
     return binary_codes
+

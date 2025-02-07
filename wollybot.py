@@ -17,10 +17,8 @@ def receiver_loop(Octavius_Receiver):
         sleep(2)
 
 
-
 def exiting():
     print(ctime() + " - Exiting")
-
 
 
 if __name__ == '__main__':

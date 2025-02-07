@@ -1,8 +1,13 @@
 from time import sleep, ctime
 from os import listdir, system, remove
 from os.path import isfile, join
-
 import RF_Transmitter
+
+try:
+    import Strava_Challenge_Plotter
+except:
+    print(ctime() + " - Strava module not found")
+
 
 try:
     from gpiozero import LED
@@ -25,7 +30,6 @@ def update():
     system(f"wget -P {directory} {git_repo}Telegram_Manager.py")
     system(f"wget -P {directory} {git_repo}wollybot.py")
     system(f"wget -P {directory} {git_repo}RF_Transmitter.py")
-
     return
 
 def download(filename):
@@ -55,7 +59,6 @@ def talk(Octavius_Receiver):
     Octavius_Receiver.send_message("[plug colour (black / white)] [number (1-5)] [action (on/off)")
     Octavius_Receiver.send_message("All [action (on / off)]")
     Octavius_Receiver.send_message("Exit")
-
     return
 
 def on():
@@ -264,13 +267,23 @@ def handle(msg, Octavius_Receiver):
         else:
             RF_Transmitter.Code_Picker(Octavius_Receiver, action.lower(), command[2].lower(), command[1])
 
-
     elif action == "EXIT":
         Octavius_Receiver.send_message(f"Exiting")
         print(ctime() + " - Exiting")
         exit()
 
+    elif action == "STRAVA":
+        print(ctime() + " - Running Strava scipt")
+        try:
+            Strava_Challenge_Plotter.main()
+            Octavius_Receiver.send_message(f"Sending challenge update, please check your email")
+        except:
+            Octavius_Receiver.send_message(f"Error, could not send update")
+            print(ctime() + " - Error")
+
 
     else:
         print(ctime() + " - No action - Command not recognised")
         Octavius_Receiver.send_message("Command not recognised")
+
+    return

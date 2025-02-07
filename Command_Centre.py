@@ -8,7 +8,6 @@ try:
 except:
     print(ctime() + " - Strava module not found")
 
-
 try:
     from gpiozero import LED
     led = LED(17)
@@ -280,7 +279,7 @@ def handle(msg, Octavius_Receiver):
     elif action == "STRAVA":
         print(ctime() + " - Running Strava scipt")
         try:
-            Strava_Challenge_Plotter.main()
+            Strava_Challenge_Plotter.Run_Script()
             Octavius_Receiver.send_message(f"Sending challenge update, please check your email")
         except:
             Octavius_Receiver.send_message(f"Error, could not send update")

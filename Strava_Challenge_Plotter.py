@@ -258,7 +258,7 @@ def update(frame):
     line2 = plt.step(activity_data.loc[:frame]["Activity Date"], activity_data.loc[:frame]["Cumulative Distance"], where="post", label=f"Total {params['activity_type']} Distance", color="blue")
     return line1, line2
 
-if __name__ == '__main__':
+def Run_Script():
 
     email_sent = False
 
@@ -295,3 +295,5 @@ if __name__ == '__main__':
             email_sent = False
             sleep(60*60)
 
+if __name__ == '__main__':
+    Run_Script()

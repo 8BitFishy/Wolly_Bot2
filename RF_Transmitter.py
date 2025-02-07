@@ -17,7 +17,6 @@ else:
 directory += "RF_Binary_Codes/Plugs-"
 
 binary_codes = []
-print(directory)
 for i in range(2):
     if i == 0:
         plug = 'Black'
@@ -38,7 +37,6 @@ for i in range(2):
 
                     code.append(value)
                 binary_codes.append([plug.lower(), int(file[0]), file[2:5].rstrip('_').lower(), code])
-                print(code)
 
 
 
@@ -57,13 +55,8 @@ def Code_Picker(Octavius_Receiver, target, action, number=None):
         number = int(number)
         print(ctime() + f" - Action - Turn {target} plug {number} {action}")
         Octavius_Receiver.send_message(f"Turning {target} plug {number} {action}")
-        print(len(binary_codes))
-        print(binary_codes)
         for i in range(len(binary_codes)):
-            print(f"{binary_codes[i][0]} == {target} and {binary_codes[i][1]} == {number} and {binary_codes[i][2]} == {action}")
-            print(f"{type(binary_codes[i][0])} == {type(target)} and {type(binary_codes[i][1])} == {type(number)} and {type(binary_codes[i][2])} == {type(action)}")
             if binary_codes[i][0] == target and binary_codes[i][1] == number and binary_codes[i][2] == action:
-                print(ctime() + f" - Code found")
                 try:
                     transmit_code(binary_codes[i][3])
                     print(ctime() + f" - {target} plug {number} turned {action}")

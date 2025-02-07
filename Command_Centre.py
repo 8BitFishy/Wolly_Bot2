@@ -17,7 +17,7 @@ except:
     print(ctime() + " - No gpiozero module found")
 
 directory = __file__.strip("Command_Centre.py").strip(":")
-protected_files = ['Command_Centre.py', 'Telegram_Manager.py', 'wollybot.py', 'telegramID.txt', 'RF_Transmitter.py']
+protected_files = ['Command_Centre.py', 'Telegram_Manager.py', 'wollybot.py', 'telegramID.txt', 'RF_Transmitter.py', 'Strava_Challenge_Plotter.py', 'Emailer.py', 'Strava_IDs.txt']
 git_repo = 'https://raw.githubusercontent.com/8BitFishy/Wolly_Bot2/refs/heads/main/'
 
 def update():
@@ -25,11 +25,16 @@ def update():
     system("rm wollybot/Telegram_Manager.py")
     system("rm wollybot/wollybot.py")
     system("rm wollybot/RF_Transmitter.py")
+    system("rm wollybot/Strava_Challenge_Plotter.py")
+    system("rm wollybot/Emailer.py")
 
     system(f"wget -P {directory} {git_repo}Command_Centre.py")
     system(f"wget -P {directory} {git_repo}Telegram_Manager.py")
     system(f"wget -P {directory} {git_repo}wollybot.py")
     system(f"wget -P {directory} {git_repo}RF_Transmitter.py")
+    system(f"wget -P {directory} {git_repo}Strava_Challenge_Plotter.py")
+    system(f"wget -P {directory} {git_repo}Emailer.py")
+
     return
 
 def download(filename):

@@ -54,6 +54,7 @@ def talk(Octavius_Receiver):
     Octavius_Receiver.send_message("Delete [filename]")
     Octavius_Receiver.send_message("[plug colour (black / white)] [number (1-5)] [action (on/off)")
     Octavius_Receiver.send_message("All [action (on / off)]")
+    Octavius_Receiver.send_message("Exit")
 
     return
 
@@ -62,7 +63,6 @@ def on():
         led.on()
     except:
         print(ctime() + "No gpiozero module found")
-
     return
 
 def off():
@@ -264,6 +264,11 @@ def handle(msg, Octavius_Receiver):
         else:
             RF_Transmitter.Code_Picker(Octavius_Receiver, action.lower(), command[2].lower(), command[1])
 
+
+    elif action == "EXIT":
+        Octavius_Receiver.send_message(f"Exiting")
+        print(ctime() + " - Exiting")
+        exit()
 
 
     else:
